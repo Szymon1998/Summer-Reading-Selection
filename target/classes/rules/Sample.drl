@@ -1,0 +1,890 @@
+package com.sample;
+import dr_gui.QAwindow;
+import dr_gui.BookWindow;
+import javax.swing.JFrame;
+import answers.Answer;
+
+rule "Init"
+    when
+    then
+		insert (new Answer("starting", "yes"));
+end
+
+rule "Start"
+	when
+		Answer(question == "starting", answer == "yes");
+	then
+		QAwindow window;
+		String question = "Fiction please!";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end				
+
+
+rule "Nonfiction"
+	when
+		Answer(question == "Fiction please!", answer == "no");
+	then
+		QAwindow window;
+		String question = "Tragedy?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end				
+
+rule "True crime"
+	when
+		Answer(question == "Tragedy?", answer == "no");
+	then
+		QAwindow window;
+		String question = "True crime?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Tales of war"
+	when
+		Answer(question == "True crime?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Tales of war?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Survival"
+	when
+		Answer(question == "Tales of war?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Survival?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "The good ol' days"
+	when
+		Answer(question == "Survival?", answer == "no");
+	then
+		QAwindow window;
+		String question = "The good ol' days?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Science"
+	when
+		Answer(question == "The good ol' days?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Science?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Social theory"
+	when
+		Answer(question == "Science?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Social theory?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Epicurious"
+	when
+		Answer(question == "Social theory?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Epicurious?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Sports"
+	when
+		Answer(question == "Epicurious?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Sports?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Biography"
+	when
+		Answer(question == "Sports?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Biography?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Classic Fiction"
+	when
+		Answer(question == "Fiction please!", answer == "yes");
+	then
+		QAwindow window;
+		String question = "Classic fiction?";
+		String[] answer = {"yes", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end		
+
+rule "High society"
+	when
+		Answer(question == "Classic fiction?", answer == "yes");
+	then
+		QAwindow window;
+		String question = "High society?";
+		String[] answer = {"Relationship intrigue", "Russian lit", "I am an anglophile", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));		
+end
+
+rule "Social issues"
+	when
+		Answer(question == "High society?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Social issues?";
+		String[] answer = {"Do you have any class?", "Race in America?", "Political allegory", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Adventure time"
+	when
+		Answer(question == "Social issues?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Adventure time?";
+		String[] answer = {"Lets play war", "Looking for something?", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Americana"
+	when
+		Answer(question == "Adventure time?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Americana?";
+		String[] answer = {"California", "The south", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Fantasy"
+	when
+		Answer(question == "Americana?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Fantasy?";
+		String[] answer = {"Absurdist mutation", "Massive epic", "Don't bite me bro", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Classic si-fi"
+	when
+		Answer(question == "Fantasy?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Classic si-fi?";
+		String[] answer = {"I can't wait for the future", "Time travel", "End of the world", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Magic realism"
+	when
+		Answer(question == "Classic si-fi?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Magic realism?";
+		String[] answer = {"An individual's plight", "Epic", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Short stories?"
+	when
+		Answer(question == "Magic realism?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Short stories?";
+		String[] answer = {"The one and only", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Poetry"
+	when
+		Answer(question == "Short stories?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Poetry?";
+		String[] answer = {"Contemporary", "Words of the young", "American classic"};
+		window = new QAwindow(question, answer);
+		System.out.println(window.getSelectedOption());
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Historical fiction"
+	when
+		Answer(question == "Classic fiction?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Historical fiction?";
+		String[] answer = {"Foul play", "The political scene", "Family ties", "God bless religion", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "That's mysterious"
+	when
+		Answer(question == "Historical fiction?", answer == "no");
+	then
+		QAwindow window;
+		String question = "That's mysterious";
+		String[] answer = {"Family", "Murder", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Violent youth"
+	when
+		Answer(question == "That's mysterious", answer == "no");
+	then
+		QAwindow window;
+		String question = "Violent youth?";
+		String[] answer = {"Military therapy", "Teen angst", "School shooting", "Afghan caste system", "Child soliders", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Dark fiction"
+	when
+		Answer(question == "Violent youth?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Dark fiction?";
+		String[] answer = {"Memory of a troubled family", "Ghost in the room", "A family in captivity", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Science fiction"
+	when
+		Answer(question == "Dark fiction?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Science fiction?";
+		String[] answer = {"Aliens", "Dark futures", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Can i have drawings"
+	when
+		Answer(question == "Science fiction?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Can I have drawings with my words?";
+		String[] answer = {"Coming of age as an outsider in a new land", "Growing up under an oppressive regime", "Survival and struggle", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "Short stories without drawings"
+	when
+		Answer(question == "Can I have drawings with my words?", answer == "no");
+	then
+		QAwindow window;
+		String question = "short stories?";
+		String[] answer = {"Fantastical", "Family life", "Sports, on and off the field", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+//klklllllllllllllllll
+rule "Something different"
+	when
+		Answer(question == "short stories?", answer == "no");
+	then
+		QAwindow window;
+		String question = "Something different?";
+		String[] answer = {"Beauty and the beast in New York", "Philosophical dog", "Sports and drugs", "no"};
+		window = new QAwindow(question, answer);
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+rule "The kids are alright"
+	when
+		Answer(question == "Something different?", answer == "no");
+	then
+		QAwindow window;
+		String question = "The kids are alright";
+		String[] answer = {"Transformations", "Tough situations"};
+		window = new QAwindow(question, answer);
+		System.out.println(window.getSelectedOption());
+		insert (new Answer(question, window.getSelectedOption()));
+end
+
+
+//BOOKS
+
+rule "Relationship intrigue"
+	when
+		Answer(question == "High society?", answer == "Relationship intrigue");
+	then
+		BookWindow window;
+		String[] books = {"<html><div style='text-align: center;'>" + "Title: The Great Gatsby <br>Author: F. Scott Fitzgerald" +"</div></html>", "<html>Title: Rebecca <br>Author: Daphne du Maurier</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Russian lit"
+	when
+		Answer(question == "High society?", answer == "Russian lit");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Anna Karenina <br>Author: Leo Tolstoy</html>", "<html>Title: Fathers and sons <br>Author Ivan Turgenev</html>"};
+		window = new BookWindow(books);
+end
+
+rule "I am an anglophile"
+	when
+		Answer(question == "High society?", answer == "I am an anglophile");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The taming of the shrew <br>Author: William Shakespeare</html>", "<html>Title: Jane eyre <br>Author: Charlotte Bronte</html>", "<html>Title: Sense and sensibility <br>Author JAne Austen</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Do you have any class?"
+	when
+		Answer(question == "Social issues?", answer == "Do you have any class?");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Oliver Twist <br>Author: Charles Dickens</html>", "<html>Title: Les miserables <br>Author: Victor Hugo</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Race in America?"
+	when
+		Answer(question == "Social issues?", answer == "Race in America?");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Color purple <br>Author: Alice Walker</html>", "<html>Title: Uncle tom's cabin <br>Author Harriet Becher Stowe</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Political allegory"
+	when
+		Answer(question == "Social issues?", answer == "Political allegory");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Animal farm <br>Author George Orwell</html>"};
+		window = new BookWindow(books);
+end
+
+rule "California"
+	when
+		Answer(question == "Americana?", answer == "California");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Of mice and men <br>Author John Steinbeck</html>"};
+		window = new BookWindow(books);
+end
+
+rule "The south"
+	when
+		Answer(question == "Americana?", answer == "The south");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Adventures of huckelberry finn <br>Author Mark Twain</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Lets play war"
+	when
+		Answer(question == "Adventure time?", answer == "Lets play war");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: For whom the bell tolls <br>Author Ernest Hemingway</html>", "<html>Title: Catch 22 <br>Author: Joseph Heller</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Looking for something?"
+	when
+		Answer(question == "Adventure time?", answer == "Looking for something?");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Heart of darkness <br>Author: Joseph Conrad</html>", "<html>Title: Moby dick <br>Author: Herman Melville</html>", "<html>Title: The count of Monte Cristo <br>Author: Alex Andre Dumas</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Absurdist mutation"
+	when
+		Answer(question == "Fantasy?", answer == "Absurdist mutation");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The methamorphosis <br>Author: Franz Kafka</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Massive epic"
+	when
+		Answer(question == "Fantasy?", answer == "Massive epic");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Lord of the rings <br>Author: J.R.R. Tolkien</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Don't bite me bro"
+	when
+		Answer(question == "Fantasy?", answer == "Don't bite me bro");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: I am legend <br>Author: Richard Matheson</html>"};
+		window = new BookWindow(books);
+end
+
+rule "I cant wait for the future"
+	when
+		Answer(question == "Classic si-fi?", answer == "I can't wait for the future");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Fahrenheit 451 <br>Author: Ray Bradbury</html> ","<html>Title: Brave new world <br>Author: Aldous Huxley</html>", "<html>Title: 1984 <br>Author:George Orwell</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Time travel"
+	when
+		Answer(question == "Classic si-fi?", answer == "Time travel");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Slaughter house Five <br>Author: Kurt Vonnegut Jr.</html>"};
+		window = new BookWindow(books);
+end
+
+rule "End of the world"
+	when
+		Answer(question == "Classic si-fi?", answer == "End of the world");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Cat's Cradle <br>Author: Kurt Vonnegut Jr.</html>"};
+		window = new BookWindow(books);
+end
+
+rule "An individuals plight"
+	when
+		Answer(question == "Magic realism?", answer == "An individual's plight");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title:The Picture of Dorian Gray <br>Author: Oscar Wilde</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Epic"
+	when
+		Answer(question == "Magic realism?", answer == "Epic");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: One Hundred Years of Solitude <br>Author: Gabriel García Márquez</html>"};
+		window = new BookWindow(books);
+end
+
+rule "The one and only"
+	when
+		Answer(question == "Short stories?", answer == "The one and only");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Selected Tales <br>Author: Edgar Allan Poe</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Contemporary"
+	when
+		Answer(question == "Poetry?", answer == "Contemporary");
+	then
+		BookWindow window;
+		String[] books = { "<html>Title: Poetry 180 <br>Author: Billy Collins</html>", "<html>Title: Sailing Alone Around the Room <br> Author: Billy Collins</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Words of the young"
+	when
+		Answer(question == "Poetry?", answer == "Words of the young");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: You Hear Me? <br>Author: Betsy Franco</html>", "<html>Title: Things I Have to Tell You <br>Author: Betsy Franco</html>"};
+		window = new BookWindow(books);
+end
+
+rule "American classic"
+	when
+		Answer(question == "Poetry?", answer == "American classic");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Collected Poems of <br>Author: Langston Hughes</html>"};
+		window = new BookWindow(books);
+end
+
+//contemporary fiction
+rule "Family"
+	when
+		Answer(question == "That's mysterious", answer == "Family");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Extremely Loud and Incredibly Close <br>Author: Jonathan Safran Foer</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Murder"
+	when
+		Answer(question == "That's mysterious", answer == "Murder");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Curious Incident of the Dog in the Night-time <br>Author: Mark Haddon</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Military therapy"
+	when
+		Answer(question == "Violent youth?", answer == "Military therapy");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Boot Camp <br>Author: Todd Strasser</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Teen angst"
+	when
+		Answer(question == "Violent youth?", answer == "Teen angst");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Flight <br>Author: Sherman Alexie</html>"};
+		window = new BookWindow(books);
+end
+
+rule "School shooting"
+	when
+		Answer(question == "Violent youth?", answer == "School shooting");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Nineteen Minutes <br>Author: Jodi Picoult</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Afghan caste system"
+	when
+		Answer(question == "Violent youth?", answer == "Afghan caste system");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Kite Runner <br>Author: Khaled Hosseini</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Child soliders"
+	when
+		Answer(question == "Violent youth?", answer == "Child soliders");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: What is the What <br>Author: Dave Eggers</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Foul play"
+	when
+		Answer(question == "Historical fiction?", answer == "Foul play");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Snow Falling on Cedars <br>Author: David Guterson</html>", "<html>Title: Dante Club <br>Aauthor: Matthew Pearl</html>"};
+		window = new BookWindow(books);
+end
+
+rule "The political scene"
+	when
+		Answer(question == "Historical fiction?", answer == "The political scene");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Plot Against America <br>Author: Philip Roth</html>", "<html>Title: The Rum Diary <br>Author: Hunter S. Thompson</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Family ties"
+	when
+		Answer(question == "Historical fiction?", answer == "Family ties");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Half Brother <br>Author: Kenneth Oppel</html>","<html>Title: A Great and Terrible Beauty <br>Author: Libba Bray</html>"};
+		window = new BookWindow(books);
+end
+
+rule "God bless religion"
+	when
+		Answer(question == "Historical fiction?", answer == "God bless religion");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Poisonwood Bible <br>Author: Barbara Kingsolver</html>", "<html>Title: Death Comes for the Archbishop <br>Author: Willa Cather</html>", "<html>Title: The Pillars of the Earth <br> Author: Ken Follett</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Memory of troubled family"
+	when
+		Answer(question == "Dark fiction?", answer == "Memory of a troubled family");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Blind Assassin <br>Author: Margaret Atwood</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Ghost in the room"
+	when
+		Answer(question == "Dark fiction?", answer == "Ghost in the room");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Lovely Bones <br>Author: Alice Sebold</html>"};
+		window = new BookWindow(books);
+end
+
+rule "A family in captivity"
+	when
+		Answer(question == "Dark fiction?", answer == "A family in captivity");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Room <br>Author: Emma Donoghue</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Aliens"
+	when
+		Answer(question =="Science fiction?", answer == "Aliens");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Ender's Game <br>Author: Orson Scott Card</html>", "<html>Title: The Hitchhiker's Guide to the Galaxy <br>Author: Douglas Adams</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Dark futures"
+	when
+		Answer(question == "Science fiction?", answer == "Dark futures");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Unwind <br>Author: Neal Shusterman</html>", "<html>Title: Feed <br>Author: M.T. Anderson</html>","<html>Title: Never Let Me Go <br>Author: Kazuo Ishiguro</html>", "<html>Title: The House of the Scorpion <br>Author: Nancy Farmer</html>", "<html>Title: Incarceron <br>Author: Catharine Fisher</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Coming of age as an oudsider in a new land"
+	when
+		Answer(question == "Can I have drawings with my words?", answer == "Coming of age as an outsider in a new land");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: American Born Chinese <br>Author: Luen Yang & Lark Pien</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Growing up under an oppressive regime"
+	when
+		Answer(question == "Can I have drawings with my words?", answer == "Growing up under an oppressive regime");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Persepolis <br>Author: Marjane Satrapi</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Survival and struggle"
+	when
+		Answer(question == "Can I have drawings with my words?", answer == "Survival and struggle");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Maus <br>Author: Art Spiegelman</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Fantasical"
+	when
+		Answer(question == "short stories?", answer == "Fantastical");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Lone Ranger and Tonto Fistfight in Heaven <br>Author: Sherman Alexie</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Family life"
+	when
+		Answer(question == "short stories?", answer == "Family life");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Unaccustomed Earth <br>Author: Jhumpa Lahiri</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Sports, on and off the field"
+	when
+		Answer(question == "short stories?", answer == "Sports, on and off the field");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Athletic Shorts <br>Author: Chris Crutcher</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Beauty and beast in NY"
+	when
+		Answer(question == "Something different?", answer == "Beauty and the beast in New York");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Beastly <br>Author: Alex Flinn</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Philosophical dog"
+	when
+		Answer(question == "Something different?", answer == "Philosophical dog");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The Art of Racing in the Rain <br>Author: Garth Stein</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Sports and drugs"
+	when
+		Answer(question == "Something different?", answer == "Sports and drugs");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Gym Candy <br>Author: Carl Deuker</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Transformations"
+	when
+		Answer(question == "The kids are alright", answer == "Transformations");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Twisted <br>Author: Laurie Halse Anderson</html>", "<html>Title: True Confessions of a Heartless Girl <br>Author: Martha Brooks</html>", "<html>Title: Just Listen <br>Author: Sarah Dessen</html>"};
+		window = new BookWindow(books);
+end
+
+rule "Tough situation"
+	when
+		Answer(question == "The kids are alright", answer == "Tough situations");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: If I Stay <br>Author: Gayle Forman</html>", "<html>Title: Tyrell <br>Author: Coe Booth</html>", "<html>Title: First Part Last <br>Author: Angela Johnson</html>", "<html>Title: November Blues <br>Author: Sharon M. Draper</html>"};
+		window = new BookWindow(books);
+end
+
+
+rule "Tragedy_book"
+	when
+		Answer(question == "Tragedy?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Into thin air <br>Author: Jon Krakauer</html> ", "<html>Title: A night to remember <br>Author: Walter Lord </html>"};
+		window = new BookWindow(books);
+end
+
+rule "True crime_book"
+	when
+		Answer(question == "True crime?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: In cold blood <br>Author: Truman Capote </html>", "<html>Title: Devil in white city <br>Author: Eric Larson </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Tales of war_book"
+	when
+		Answer(question == "Tales of war?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Hiroshima <br>Author: John Hersey </html>", "<html>Title:Imperial life in the emerald city <br>Author: Rajiv Chandrasekaran </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Survival_book"
+	when
+		Answer(question == "Survival?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: I will plant you like a lilac tree <br>Author: Laura Hillman </html>", "<html>Title: Kaffir boy <br>Author: Mark Mathabane</html>", "<html>Title: Between a rock and hard place <br>Author: Aron Ralston</html>", "<html>Title: Unbroken: A world war II story of survival resilence, and redemption <br>Author: Laura Hillenbrand </html>"};
+		window = new BookWindow(books);
+end
+
+rule "The good ol' days_book"
+	when
+		Answer(question == "The good ol' days?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: No ordinary time <br>Author: Doris Kearns Goodwin</html> ", "<html>Title: War, women and the news <br>Author: Catherine Gourley </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Science_book"
+	when
+		Answer(question == "Science?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The elegant universe <br>Author: Brian Greene </html>", "<html>Title:The naked ape <br>Author: Desmond Morris </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Social theory_book"
+	when
+		Answer(question == "Social theory?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Freakonomics <br>Author: Steven D. Levitt & Stephen J. Dubner</html> ", "<html>Title: Tipping point <br>Author: Malcolm Gladwell </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Epicurious_book"
+	when
+		Answer(question == "Epicurious?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Fast food nation <br>Author: Eric Schlosser </html>", "<html>Title: The omnivore's dilemma: A natural history of four meals <br>Author: Michael Pollan </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Sports_book"
+	when
+		Answer(question == "Sports?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: Swimming antarctica <br>Author: Lynne Cox </html>", "<html>Title: Friday night lights <br>Author: H. G. Bissinger </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Biography_book"
+	when
+		Answer(question == "Biography?", answer == "yes");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: The immortal life of Henrietta Lacks <br>Author: Rebecca Skloot </html>", "<html>Title: John Adams <br>Author: David Mccullough </html>"};
+		window = new BookWindow(books);
+end
+
+rule "Auto-biography_book"
+	when
+		Answer(question == "Biography?", answer == "no");
+	then
+		BookWindow window;
+		String[] books = {"<html>Title: I know why caged bird sings <br>Author: Maya Angelou </html>", "<html>Title: Ghost in the wires <br>Author: Kevin Mitnick </html>"};
+		window = new BookWindow(books);
+end
